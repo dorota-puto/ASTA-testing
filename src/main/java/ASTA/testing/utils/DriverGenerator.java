@@ -11,6 +11,8 @@ public class DriverGenerator {
 
     private CustomFile customFile;
 
+   public DriverGenerator() {customFile = new CustomFile();}
+
     public WebDriver getDriver(String browserType, long implicitlyWait, boolean windowMaximize) {
 
         WebDriver driver;
