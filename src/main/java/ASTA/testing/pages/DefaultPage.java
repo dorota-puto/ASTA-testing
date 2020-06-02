@@ -16,4 +16,9 @@ public class DefaultPage {
     public void clickElement(WebElement element) {
         element.click();
     }
+
+    public void fillElement(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value);
+    }
 }
