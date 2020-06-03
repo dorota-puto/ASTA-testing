@@ -23,4 +23,9 @@ public class DashBoardPage extends DefaultPage {
         clickElement(task4Button);
         return new FormPage(driver);
     }
+
+    public GroupPage openGroupPage() {
+        clickElement(task2Button);
+        return new GroupPage(driver);
+    }
 }

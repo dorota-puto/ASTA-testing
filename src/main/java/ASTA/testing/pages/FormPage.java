@@ -19,12 +19,7 @@ public class FormPage extends DefaultPage {
 
         String parentHandle = driver.getWindowHandle();
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        wait(1);
         clickElement(applyButton);
 
         Set<String> handles = driver.getWindowHandles();

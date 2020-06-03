@@ -7,7 +7,7 @@
 
     <test name="Regression1">
         <classes>
-            <class name="ASTA.testing.tests.FormTest"/>
+            <class name="ASTA.testing.tests.GroupingTest"/>
         </classes>
     </test>
 </suite>

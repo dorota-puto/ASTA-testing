@@ -16,4 +16,6 @@ public class BaseProperties {
     public static String APPLICANT_EMAIL = "jon@snow.com";
     public static String APPLICANT_PHONE = "600-600-600";
 
+    public static  String FILTER = "Elektronika";
+
 }
