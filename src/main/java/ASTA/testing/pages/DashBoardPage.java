@@ -16,8 +16,8 @@ public class DashBoardPage extends DefaultPage {
     @FindBy(linkText = "Zadanie 4")
     private WebElement task4Button;
 
-    @FindBy(linkText = "Zadanie 7")
-    private WebElement task7Button;
+    @FindBy(linkText = "Zadanie 1")
+    private WebElement task1Button;
 
     public FormPage openFormPage() {
         clickElement(task4Button);
@@ -27,5 +27,10 @@ public class DashBoardPage extends DefaultPage {
     public GroupPage openGroupPage() {
         clickElement(task2Button);
         return new GroupPage(driver);
+    }
+
+    public BasketPage openBasketPage() {
+        clickElement(task1Button);
+        return new BasketPage(driver);
     }
 }
