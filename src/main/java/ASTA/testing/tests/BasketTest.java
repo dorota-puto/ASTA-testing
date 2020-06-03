@@ -15,6 +15,7 @@ public class BasketTest extends DefaultTest {
         Assert.assertTrue(new DashBoardPage(driver)
                 .openBasketPage()
                 .addToBasket(BaseProperties.COUNT, Objects.requireNonNull(BasketPage.filterProduct(BaseProperties.BASKET_FILTER, BaseProperties.COUNT)))
+                .addToBasket(5, Objects.requireNonNull(BasketPage.filterProduct("Kabel", 5)))
                 .isBasketWellCounted());
     }
 }

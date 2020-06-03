@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class BasketPage extends DefaultPage {
@@ -13,15 +14,16 @@ public class BasketPage extends DefaultPage {
         super(driver);
     }
 
-    private static double wholePrice;
+    private static BigDecimal wholePrice = new BigDecimal(0);
 
     @FindBy(tagName = "form")
     static WebElement productList;
 
 
     private static void refreshWholePrice(int count, WebElement p) {
-        double price = Double.parseDouble(p.findElement(By.tagName("p")).getText().split(" ")[1]);
-        wholePrice += count * price;
+        BigDecimal price = new BigDecimal(p.findElement(By.tagName("p")).getText().split(" ")[1]);
+        BigDecimal decimalCount = new BigDecimal(count);
+        wholePrice = wholePrice.add(price.multiply(decimalCount));
     }
 
     public static WebElement filterProduct(String filter, int count) {
@@ -48,6 +50,6 @@ public class BasketPage extends DefaultPage {
 
     public boolean isBasketWellCounted() {
         WebElement priceField = driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div[2]/p[2]/span"));
-        return Double.parseDouble(priceField.getText().split(" ")[0]) == wholePrice;
+        return new BigDecimal(priceField.getText().split(" ")[0]).equals(wholePrice);
     }
 }
