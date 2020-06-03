@@ -18,7 +18,7 @@ public class GroupPage extends DefaultPage {
     @FindBy(xpath = "/html/body/div/div/div[2]/div[1]/span/span[1]/span")
     WebElement searchField;
 
-    public void filterItems(String filter) {
+    public GroupPage filterItems(String filter) {
 
         wait(1);
         Actions builder = new Actions(driver);
@@ -33,5 +33,19 @@ public class GroupPage extends DefaultPage {
                 break;
             }
         }
+        return this;
+    }
+
+    public boolean checkIfFiltered(String filter) {
+
+        WebElement productList = driver.findElement(By.id("product-list"));
+        List<WebElement> products = productList.findElements(By.tagName("p"));
+
+        for (int i = 2; i <= products.size(); i += 3) {
+            if (!products.get(i).getText().equals(filter)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

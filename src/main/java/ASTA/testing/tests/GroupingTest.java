@@ -10,6 +10,7 @@ public class GroupingTest extends DefaultTest {
     public void groupItemTest() {
         new DashBoardPage(driver)
                 .openGroupPage()
-                .filterItems(BaseProperties.FILTER);
+                .filterItems(BaseProperties.FILTER)
+                .checkIfFiltered(BaseProperties.FILTER);
     }
 }
