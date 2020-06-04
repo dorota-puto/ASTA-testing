@@ -29,7 +29,7 @@ public class DataReader {
 
             excelWBook = new XSSFWorkbook(excelFile);
             excelWSheet = excelWBook.getSheet(sheetName);
-            cell = excelWSheet.getRow(0).getCell(0);
+            cell = excelWSheet.getRow(1).getCell(1);
             cellData = cell.getStringCellValue();
             System.out.println(cellData);
         } catch (FileNotFoundException e) {

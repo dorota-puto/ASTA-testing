@@ -3,10 +3,9 @@ package ASTA.testing.tests;
 import ASTA.testing.utils.BaseProperties;
 import ASTA.testing.utils.CustomFile;
 import ASTA.testing.utils.DriverGenerator;
+import ASTA.testing.utils.ExcelUtility;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 public class DefaultTest {
     protected static WebDriver driver;
@@ -26,9 +25,22 @@ public class DefaultTest {
         driver.get(BaseProperties.BASE_URL);
     }
 
+    @BeforeClass
+    public void setUpMethod() {
+        try {
+            ExcelUtility.setExcelFile(customFile.getResourceFilePath(BaseProperties.DATA_FILE_NAME), BaseProperties.SHEET_NAME);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @AfterMethod
+    public void returnHome() {
+        driver.navigate().back();
+    }
 
     @AfterSuite
     public void tearDown() {
-   //     driver.quit();
+        driver.quit();
     }
 }

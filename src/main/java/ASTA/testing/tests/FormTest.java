@@ -1,21 +1,44 @@
 package ASTA.testing.tests;
 
 import ASTA.testing.pages.DashBoardPage;
+import ASTA.testing.pages.DefaultPage;
 import ASTA.testing.utils.BaseProperties;
+import ASTA.testing.utils.ExcelUtility;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import java.util.Set;
 
 public class FormTest extends DefaultTest {
 
-    @Test
-    public void fillFormTest() {
+    @DataProvider(name = "formData")
+    public Object[][] dataProvider() {
+        Object[][] testData = ExcelUtility.getTestData("valid");
+        return testData;
+    }
+
+    @AfterMethod
+    public void returnHome() {
+
+        String parentHandle = driver.getWindowHandle();
+        Set<String> handles = driver.getWindowHandles();
+        for (String handle : handles) {
+            if (!handle.equals(parentHandle)) {
+                driver.close();
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+        driver.navigate().back();
+    }
+
+    @Test(dataProvider = "formData")
+    public void fillFormTest(String name, String email, String phone) {
 
         Assert.assertTrue(
                 new DashBoardPage(driver).openFormPage()
                         .openApplyFormPage()
-                        .fillApplyForm(BaseProperties.APPLICANT_NAME,
-                                BaseProperties.APPLICANT_EMAIL,
-                                BaseProperties.APPLICANT_PHONE)
+                        .fillApplyForm(name, email, phone)
                         .submitForm()
                         .isConfirmMessageDisplayed());
     }
