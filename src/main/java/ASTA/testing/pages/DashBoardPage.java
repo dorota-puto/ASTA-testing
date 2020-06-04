@@ -6,10 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class DashBoardPage extends DefaultPage {
 
-    public DashBoardPage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(linkText = "Zadanie 2")
     private WebElement task2Button;
 
@@ -18,6 +14,10 @@ public class DashBoardPage extends DefaultPage {
 
     @FindBy(linkText = "Zadanie 1")
     private WebElement task1Button;
+
+    public DashBoardPage(WebDriver driver) {
+        super(driver);
+    }
 
     public FormPage openFormPage() {
         clickElement(task4Button);

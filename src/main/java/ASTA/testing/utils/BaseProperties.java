@@ -2,7 +2,6 @@ package ASTA.testing.utils;
 
 public class BaseProperties {
 
-
     public static String BASE_URL = "https://testingcup.pgs-soft.com/";
 
     public static String CHROME_BROWSER_TYPE = "chrome";

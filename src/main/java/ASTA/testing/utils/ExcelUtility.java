@@ -30,7 +30,6 @@ public class ExcelUtility {
         String[][] testData = null;
 
         try {
-
             DataFormatter formatter = new DataFormatter();
             XSSFCell[] boundaryCells = findCells(tableName);
             XSSFCell startCell = boundaryCells[0];

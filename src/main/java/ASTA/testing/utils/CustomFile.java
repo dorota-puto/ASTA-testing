@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 
 public class CustomFile {
 
-
     public String getResourceFilePath(String fileName) {
         try {
             return Paths.get(
@@ -19,7 +18,6 @@ public class CustomFile {
             return "";
         }
     }
-
     public static  String getProjectPath() {
         return System.getProperty("user.dir");
     }

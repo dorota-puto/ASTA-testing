@@ -15,7 +15,7 @@ public class GroupPage extends DefaultPage {
         super(driver);
     }
 
-    @FindBy(xpath = "/html/body/div/div/div[2]/div[1]/span/span[1]/span")
+    @FindBy(className = "select2-selection__rendered")
     WebElement searchField;
 
     public GroupPage filterItems(String filter) {

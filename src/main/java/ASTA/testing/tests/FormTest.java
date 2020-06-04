@@ -13,8 +13,16 @@ public class FormTest extends DefaultTest {
 
     @DataProvider(name = "formData")
     public Object[][] dataProvider() {
-        Object[][] testData = ExcelUtility.getTestData("valid");
-        return testData;
+        return ExcelUtility.getTestData("valid");
+    }
+
+    @BeforeClass
+    public void setUpMethod() {
+        try {
+            ExcelUtility.setExcelFile(customFile.getResourceFilePath(BaseProperties.DATA_FILE_NAME), BaseProperties.SHEET_NAME);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @AfterMethod

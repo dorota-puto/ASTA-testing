@@ -6,11 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ApplyFormPage extends DefaultPage {
 
-
-    public ApplyFormPage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(xpath = "/html/body/iframe")
     private WebElement frame;
 
@@ -29,6 +24,9 @@ public class ApplyFormPage extends DefaultPage {
     @FindBy(tagName = "h1")
     private WebElement confirmMessage;
 
+    public ApplyFormPage(WebDriver driver) {
+        super(driver);
+    }
 
     public ApplyFormPage fillApplyForm(String name, String email, String phone) {
         driver.switchTo().frame(frame);
@@ -44,6 +42,6 @@ public class ApplyFormPage extends DefaultPage {
     }
 
     public boolean isConfirmMessageDisplayed() {
-       return confirmMessage.isDisplayed();
+        return confirmMessage.isDisplayed();
     }
 }

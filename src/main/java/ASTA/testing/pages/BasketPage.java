@@ -10,23 +10,22 @@ import java.util.List;
 
 public class BasketPage extends DefaultPage {
 
+    private BigDecimal wholePrice = new BigDecimal(0);
+
+    @FindBy(tagName = "form")
+    WebElement productList;
+
     public BasketPage(WebDriver driver) {
         super(driver);
     }
 
-    private static BigDecimal wholePrice = new BigDecimal(0);
-
-    @FindBy(tagName = "form")
-    static WebElement productList;
-
-
-    private static void refreshWholePrice(int count, WebElement p) {
+    private void refreshWholePrice(int count, WebElement p) {
         BigDecimal price = new BigDecimal(p.findElement(By.tagName("p")).getText().split(" ")[1]);
         BigDecimal decimalCount = new BigDecimal(count);
         wholePrice = wholePrice.add(price.multiply(decimalCount));
     }
 
-    public static WebElement filterProduct(String filter, int count) {
+    private WebElement filterProduct(String filter, int count) {
         List<WebElement> products = productList.findElements(By.className("caption"));
 
         for (WebElement p : products) {
@@ -38,7 +37,8 @@ public class BasketPage extends DefaultPage {
         return null;
     }
 
-    public BasketPage addToBasket(int count, WebElement product) {
+    public BasketPage addToBasket(int count, String filter) {
+        WebElement product = filterProduct(filter, count);
         WebElement countField = product.findElement(By.className("form-control"));
         wait(2);
         fillElement(countField, String.valueOf(count));
@@ -49,7 +49,7 @@ public class BasketPage extends DefaultPage {
     }
 
     public boolean isBasketWellCounted() {
-        WebElement priceField = driver.findElement(By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div[2]/p[2]/span"));
+        WebElement priceField = driver.findElement(By.className("summary-price"));
         return new BigDecimal(priceField.getText().split(" ")[0]).equals(wholePrice);
     }
 }
