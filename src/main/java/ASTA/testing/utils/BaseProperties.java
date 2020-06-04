@@ -21,4 +21,7 @@ public class BaseProperties {
     public static String BASKET_FILTER = "Okulary";
     public static Integer COUNT = 2;
 
+    public static String DATA_FILE_NAME = "DataToTest.xlsx";
+    public static String SHEET_NAME = "Sheet1";
+
 }
