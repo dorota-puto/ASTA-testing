@@ -10,12 +10,10 @@ public class BaseProperties {
     public static String CHROME_DRIVER_FILE_NAME = "chromedriver";
     public static String FIREFOX_DRIVER_FILE_NAME = "geckodriver";
 
-    public static  String GROUPIMG_FILTER = "Elektronika";
-
-    public static String BASKET_FILTER = "Okulary";
-    public static Integer COUNT = 2;
+    public static  String GROUPING_FILTER = "Elektronika";
 
     public static String DATA_FILE_NAME = "Data.xlsx";
-    public static String SHEET_NAME = "Sheet1";
+    public static String FORM_DATA_SHEET = "formData";
+    public static String BASKET_DATA_SHEET = "basketData";
 
 }

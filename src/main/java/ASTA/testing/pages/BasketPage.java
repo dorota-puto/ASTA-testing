@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public class BasketPage extends DefaultPage {
 
@@ -37,7 +37,14 @@ public class BasketPage extends DefaultPage {
         return null;
     }
 
-    public BasketPage addToBasket(int count, String filter) {
+    public BasketPage addToBasket(Map<String, Integer> productToCount) {
+        for (Map.Entry<String, Integer> pair : productToCount.entrySet()) {
+            addToBasket(pair.getValue(), pair.getKey());
+        }
+        return this;
+    }
+
+    private BasketPage addToBasket(int count, String filter) {
         WebElement product = filterProduct(filter, count);
         WebElement countField = product.findElement(By.className("form-control"));
         wait(2);
@@ -51,5 +58,15 @@ public class BasketPage extends DefaultPage {
     public boolean isBasketWellCounted() {
         WebElement priceField = driver.findElement(By.className("summary-price"));
         return new BigDecimal(priceField.getText().split(" ")[0]).equals(wholePrice);
+    }
+
+    public BasketPage cleanBasket() {
+        WebElement basketEl = driver.findElement(By.className("panel-body"));
+        List<WebElement> delButtons = basketEl.findElements(By.tagName("button"));
+        for (WebElement button : delButtons) {
+            wait(1);
+            clickElement(button);
+        }
+        return this;
     }
 }

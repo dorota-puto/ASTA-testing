@@ -14,7 +14,7 @@ public class GroupingTest extends DefaultTest {
     public void groupItemTest() {
         Assert.assertTrue(new DashBoardPage(driver)
                 .openGroupPage()
-                .filterItems(BaseProperties.GROUPIMG_FILTER)
-                .checkIfFiltered(BaseProperties.GROUPIMG_FILTER));
+                .filterItems(BaseProperties.GROUPING_FILTER)
+                .checkIfFiltered(BaseProperties.GROUPING_FILTER));
     }
 }

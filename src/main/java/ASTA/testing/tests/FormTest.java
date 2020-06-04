@@ -1,7 +1,6 @@
 package ASTA.testing.tests;
 
 import ASTA.testing.pages.DashBoardPage;
-import ASTA.testing.pages.DefaultPage;
 import ASTA.testing.utils.BaseProperties;
 import ASTA.testing.utils.ExcelUtility;
 import org.testng.Assert;
@@ -19,7 +18,7 @@ public class FormTest extends DefaultTest {
     @BeforeClass
     public void setUpMethod() {
         try {
-            ExcelUtility.setExcelFile(customFile.getResourceFilePath(BaseProperties.DATA_FILE_NAME), BaseProperties.SHEET_NAME);
+            ExcelUtility.setExcelFile(customFile.getResourceFilePath(BaseProperties.DATA_FILE_NAME), BaseProperties.FORM_DATA_SHEET);
         } catch (Exception e) {
             e.printStackTrace();
         }
