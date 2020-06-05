@@ -3,14 +3,13 @@ package ASTA.testing.tests;
 import ASTA.testing.utils.BaseProperties;
 import ASTA.testing.utils.CustomFile;
 import ASTA.testing.utils.DriverGenerator;
-import ASTA.testing.utils.ExcelUtility;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 public class DefaultTest {
+
     protected static WebDriver driver;
     protected static CustomFile customFile;
-
 
     @Parameters({"browserType", "implicitlyWait", "windowMaximize"})
     @BeforeSuite

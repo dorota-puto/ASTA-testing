@@ -1,16 +1,13 @@
 package ASTA.testing.tests;
 
-import ASTA.testing.pages.BasketPage;
 import ASTA.testing.pages.DashBoardPage;
-import ASTA.testing.utils.BaseProperties;
 import ASTA.testing.utils.ExcelUtility;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static ASTA.testing.utils.BaseProperties.BASKET_DATA_SHEET;
@@ -31,7 +28,7 @@ public class BasketTest extends DefaultTest {
     }
 
     private Map<String, Integer> asMap(String[][] testCase) {
-        Map<String, Integer> result = new HashMap<>();
+        Map<String, Integer> result = new LinkedHashMap<>();
 
         for (String[] strings : testCase) {
             result.put(strings[0], Integer.parseInt(strings[1]));
